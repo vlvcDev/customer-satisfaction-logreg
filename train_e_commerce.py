@@ -78,11 +78,3 @@ feature_names += ["Age", "TotalSpend", "ItemsPurchased", "Rating", "DaysSinceLas
 plot_pred_vs_actual(clf, X_test, y_test)
 plot_feature_importance(clf, feature_names)
 plot_probability_curve(clf, X, y, feature_idx= feature_names.index("DiscountApplied"), feature_name="DiscountApplied")
-
-X_train = clf.recursive_feature_elimination(X_train, y_train, feature_names, top_n=5)
-print("Top 5 features:", X_train)
-clf.fit(X_train, y_train)
-
-preds = clf.predict(X_test)
-acc = np.mean(preds == y_test)
-print("Accuracy:", acc)
